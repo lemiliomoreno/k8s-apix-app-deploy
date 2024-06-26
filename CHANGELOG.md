@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/lemiliomoreno/k8s-apix-app-deploy/compare/v1.2.0...v1.3.0) (2024-06-26)
+
+
+### Features
+
+* fix pipeline ([#3](https://github.com/lemiliomoreno/k8s-apix-app-deploy/issues/3)) ([ea0333e](https://github.com/lemiliomoreno/k8s-apix-app-deploy/commit/ea0333ebbe3400232d81fe924d4af8cf716bfe7f))
+
 # [1.2.0](https://github.com/lemiliomoreno/k8s-apix-app-deploy/compare/v1.1.1...v1.2.0) (2024-06-26)
 
 
