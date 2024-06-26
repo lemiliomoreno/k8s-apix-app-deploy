@@ -51,6 +51,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Get Latest Release
+        id: latest_tag
+        uses: WyriHaximus/github-action-get-previous-tag@v1
+        with:
+          fallback: 1.0.0
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -61,4 +67,8 @@ jobs:
       - name: Login to K8s Cluster
         run: |
           aws eks update-kubeconfig --region ${{ secrets.AWS_DEFAULT_REGION }} --name tot-k8s-cluster
-          kubectl get all -n dev-sample-nginx
+      
+      - name: Replace Deployment Manifest Version
+        working-directory: manifests
+        run: |
+          sed "s|VERSION|${{ steps.latest_tag.outputs.tag }}|g" 02-deployment.yaml
