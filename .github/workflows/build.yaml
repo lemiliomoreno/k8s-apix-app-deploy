@@ -72,4 +72,8 @@ jobs:
         working-directory: manifests
         run: |
           sed -i "s|VERSION|v${{ steps.latest_tag.outputs.tag }}|g" 02-deployment.yaml
-          cat 02-deployment.yaml
+
+      - name: Deploy Application
+        working-directory: manifests
+        run: |
+          kubectl apply -f .
