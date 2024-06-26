@@ -41,3 +41,39 @@ jobs:
         run: |
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+
+  Deploy:
+    runs-on: ubuntu-latest
+    environment: Dev
+    needs: [BuildDockerImage]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get Latest Release
+        id: latest_tag
+        uses: WyriHaximus/github-action-get-previous-tag@v1
+        with:
+          fallback: 1.0.0
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+
+      - name: Login to K8s Cluster
+        run: |
+          aws eks update-kubeconfig --region ${{ secrets.AWS_DEFAULT_REGION }} --name tot-k8s-cluster
+      
+      - name: Replace Deployment Manifest Version
+        working-directory: manifests
+        run: |
+          sed -i "s|VERSION|v${{ steps.latest_tag.outputs.tag }}|g" 02-deployment.yaml
+
+      - name: Deploy Application
+        working-directory: manifests
+        run: |
+          kubectl apply -f .
