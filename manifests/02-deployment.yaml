@@ -1,20 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dev-django-api-deployment
+  name: dev-django-db-deployment
   namespace: dev-django-api
 spec:
   selector:
     matchLabels:
-      app: dev-django-api
+      app: dev-django-db
   replicas: 2
   template:
     metadata:
       labels:
-        app: dev-django-api
+        app: dev-django-db
     spec:
       containers:
-        - name: dev-django-api
-          image: 730335497386.dkr.ecr.us-west-2.amazonaws.com/dev-django-api:VERSION
+        - name: dev-django-db
+          image: postgres:16
+          env:
+            - name: POSTGRES_PASSWORD
+              value: password
+            - name: POSTGRES_USER
+              value: user
+            - name: POSTGRES_DB
+              value: postgres
           ports:
-            - containerPort: 80
+            - containerPort: 5432
