@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/lemiliomoreno/k8s-apix-app-deploy/compare/v1.1.0...v1.1.1) (2024-06-26)
+
+
+### Bug Fixes
+
+* **deploy:** typo in deploy step ([#2](https://github.com/lemiliomoreno/k8s-apix-app-deploy/issues/2)) ([0ac8b87](https://github.com/lemiliomoreno/k8s-apix-app-deploy/commit/0ac8b8704056329371ced7ca381f3b9d9e5806b3))
+
 # [1.1.0](https://github.com/lemiliomoreno/k8s-apix-app-deploy/compare/v1.0.0...v1.1.0) (2024-06-26)
 
 
