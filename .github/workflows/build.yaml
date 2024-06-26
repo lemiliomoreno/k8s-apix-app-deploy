@@ -61,3 +61,4 @@ jobs:
       - name: Login to K8s Cluster
         run: |
           aws eks update-kubeconfig --region ${{ secrets.AWS_DEFAULT_REGION }} --name tot-k8s-cluster
+          kubectl get all -n dev-sample-nginx
