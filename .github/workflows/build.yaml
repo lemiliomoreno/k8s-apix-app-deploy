@@ -71,7 +71,7 @@ jobs:
       - name: Replace Deployment Manifest Version
         working-directory: manifests
         run: |
-          sed -i "s|VERSION|v${{ steps.latest_tag.outputs.tag }}|g" 02-deployment.yaml
+          sed -i "s|VERSION|${{ steps.latest_tag.outputs.tag }}|g" 02-deployment.yaml
 
       - name: Deploy Application
         working-directory: manifests
