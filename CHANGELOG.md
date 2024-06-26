@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/lemiliomoreno/k8s-apix-app-deploy/compare/v1.1.1...v1.2.0) (2024-06-26)
+
+
+### Features
+
+* add database deployment ([c524c0c](https://github.com/lemiliomoreno/k8s-apix-app-deploy/commit/c524c0cb0b70ab43b2faca44327bb758f1c77536))
+* add database deployment ([4268f03](https://github.com/lemiliomoreno/k8s-apix-app-deploy/commit/4268f0323414c7af563e44644ec1f5f2417ced32))
+
 ## [1.1.1](https://github.com/lemiliomoreno/k8s-apix-app-deploy/compare/v1.1.0...v1.1.1) (2024-06-26)
 
 
