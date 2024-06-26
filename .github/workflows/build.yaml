@@ -58,6 +58,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
 
-      - name: Test kubectl
+      - name: Login to K8s Cluster
         run: |
-          kubectl version
+          aws eks update-kubeconfig --region ${{ secrets.AWS_DEFAULT_REGION }} --name tot-k8s-cluster
